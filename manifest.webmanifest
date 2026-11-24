@@ -1,0 +1,17 @@
+{
+  "name": "Salt Stone Wardens",
+  "short_name": "Wardens",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#101514",
+  "theme_color": "#111615",
+  "description": "A dark fantasy company management game.",
+  "icons": [
+    {
+      "src": "assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

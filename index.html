@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111615">
+  <meta name="description" content="The Salt Stone Wardens — a dark fantasy company management game.">
+  <title>Salt Stone Wardens</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Salt Stone Wardens home">
+        <span class="brand-mark">✦</span>
+        <span><strong>SALT & STONE</strong><small>WARDENS COMPANY</small></span>
+      </a>
+      <div class="top-actions">
+        <span class="save-indicator" id="saveStatus">Saved locally</span>
+        <button class="icon-button" id="settingsButton" aria-label="Settings">⚙</button>
+      </div>
+    </header>
+
+    <main id="mainContent">
+      <section class="hero-panel">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="live-dot"></span> THE NORTHERN COAST · YEAR 417</div>
+          <h1>Stonewake<br><em>Bastion</em></h1>
+          <p class="hero-subtitle">A fortress at the edge of a drowned world.</p>
+          <div class="hero-meta">
+            <span id="dateLabel">Day 1 · First Thaw</span><span class="meta-divider"></span>
+            <span id="timeLabel">06:00</span>
+            <span class="speed-pill" id="speedLabel">NORMAL</span>
+          </div>
+        </div>
+        <div class="hero-art" role="img" aria-label="Stylized silhouette of a coastal fortress"></div>
+        <div class="hero-vignette"></div>
+      </section>
+
+      <section class="resource-strip" id="resourceStrip" aria-label="Company resources"></section>
+
+      <section class="view active" id="view-bastion">
+        <div class="section-heading">
+          <div><div class="eyebrow">YOUR HOLDING</div><h2>The Bastion</h2></div>
+          <button class="text-button" id="fortressDetails">FORTRESS LOG <span>↗</span></button>
+        </div>
+        <div class="stat-grid" id="bastionStats"></div>
+        <div class="section-heading compact">
+          <div><div class="eyebrow">INFRASTRUCTURE</div><h2>Facilities</h2></div>
+          <span class="muted-label">STONEWAKE · LEVEL I</span>
+        </div>
+        <div class="facility-grid" id="facilityGrid"></div>
+        <div class="notice-panel">
+          <div class="notice-icon">⌁</div>
+          <div><strong>The coast is not quiet.</strong><p>Scouts report strange lights beyond the salt marsh. The company is not yet equipped to investigate.</p></div>
+        </div>
+      </section>
+
+      <section class="view" id="view-company">
+        <div class="section-heading">
+          <div><div class="eyebrow">PEOPLE UNDER YOUR BANNER</div><h2>The Company</h2></div>
+          <button class="primary-button small" id="recruitButton">＋ Recruit</button>
+        </div>
+        <div class="company-summary" id="companySummary"></div>
+        <div class="character-list" id="characterList"></div>
+      </section>
+
+      <section class="view" id="view-world">
+        <div class="section-heading">
+          <div><div class="eyebrow">BEYOND THE WALLS</div><h2>The Coastlands</h2></div>
+          <span class="muted-label">REGIONAL OVERVIEW</span>
+        </div>
+        <div class="world-card">
+          <div class="world-map"><span class="map-label map-bastion">STONEWAKE</span><span class="map-label map-marsh">SALT MARSH</span><span class="map-label map-sea">THE GREY REACH</span><span class="map-pin">✦</span></div>
+          <div class="world-caption"><strong>A fractured coast</strong><p>Trade routes have faltered. Old powers watch the shoreline, and the sea keeps what it takes.</p></div>
+        </div>
+        <div class="section-heading compact"><div><div class="eyebrow">POWERS IN THE REGION</div><h2>Known Factions</h2></div></div>
+        <div class="faction-list" id="factionList"></div>
+      </section>
+
+      <section class="view" id="view-missions">
+        <div class="section-heading"><div><div class="eyebrow">ORDERS & EXPEDITIONS</div><h2>Mission Board</h2></div><span class="muted-label">PREPARATION</span></div>
+        <div class="mission-feature">
+          <div class="mission-art"></div>
+          <div class="mission-body"><span class="tag">AVAILABLE SOON</span><h3>The Salt Marsh Lights</h3><p>Something moves among the drowned watchtowers. Reconnaissance parties have not returned.</p><div class="mission-footer"><span>RECONNAISSANCE</span><span>RISK: UNKNOWN</span></div></div>
+        </div>
+        <div class="empty-state"><span class="empty-symbol">⚔</span><h3>The company is not ready.</h3><p>Expedition planning and automatic combat will be introduced in the next development milestone. Build your strength and prepare your people.</p></div>
+      </section>
+
+      <section class="view" id="view-chronicle">
+        <div class="section-heading"><div><div class="eyebrow">A RECORD OF WHAT PASSES</div><h2>Chronicle</h2></div><span class="muted-label">COMPANY RECORDS</span></div>
+        <div class="chronicle-list" id="chronicleList"></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Main navigation">
+      <button class="nav-item active" data-view="bastion"><span>⌂</span><small>BASTION</small></button>
+      <button class="nav-item" data-view="company"><span>♙</span><small>COMPANY</small></button>
+      <button class="nav-item" data-view="world"><span>◎</span><small>WORLD</small></button>
+      <button class="nav-item" data-view="missions"><span>⚔</span><small>MISSIONS</small></button>
+      <button class="nav-item" data-view="chronicle"><span>▤</span><small>CHRONICLE</small></button>
+    </nav>
+  </div>
+
+  <dialog id="characterDialog" class="modal">
+    <form method="dialog"><button class="modal-close" aria-label="Close">×</button></form>
+    <div id="characterDetail"></div>
+  </dialog>
+  <dialog id="settingsDialog" class="modal">
+    <form method="dialog"><button class="modal-close" aria-label="Close">×</button></form>
+    <div class="eyebrow">GAME SETTINGS</div><h2>Time & Save</h2>
+    <p class="modal-copy">Game time advances while the game is open. One real minute equals one game hour. When you return, the game applies elapsed time since your last save, up to 24 hours.</p>
+    <div class="setting-row"><span>Simulation speed</span><div class="speed-controls"><button data-speed="0">Ⅱ</button><button data-speed="1">1×</button><button data-speed="2">2×</button></div></div>
+    <div class="setting-row"><span>Local save</span><button class="text-button" id="exportSave">EXPORT SAVE ↓</button></div>
+    <div class="setting-row"><span>Restore backup</span><label class="text-button file-label">IMPORT SAVE ↑<input type="file" id="importSave" accept="application/json"></label></div>
+    <p class="fine-print">Your save is stored in this browser on this device. Export a backup before clearing browser data.</p>
+  </dialog>
+  <div class="toast" id="toast" role="status"></div>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
